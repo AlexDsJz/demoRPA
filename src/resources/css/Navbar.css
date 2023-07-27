@@ -1,0 +1,29 @@
+.navbar {
+  background-color: #0090A9 !important;
+  border-radius: 0px 15px 15px 0px;
+  border: 0 !important; }
+
+.navbar-item > *, .nav-icon {
+  color: #fff !important;
+  opacity: 1 !important; }
+
+.navbar-item {
+  width: 80%;
+  margin-top: 2% !important;
+  margin-left: 10% !important;
+  margin-right: 10% !important;
+  background-color: #0090A9 !important; }
+
+.navbar-item .active {
+  background-color: #05BCC8 !important;
+  border-radius: 25px !important;
+  border: 0 !important; }
+
+.nav-link {
+  border-radius: 25px !important; }
+
+.nav-link:hover {
+  background-color: #05BCC8 !important; }
+
+.nav-icon {
+  margin-right: 10% !important; }

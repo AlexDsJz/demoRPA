@@ -1,0 +1,1436 @@
+{
+  "platform": "reactjs",
+  "models": [
+    {
+      "name": "order",
+      "attrs": [
+        {
+          "name": "client_name",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "building_name",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "building_street",
+          "type": "string",
+          "empty": true,
+          "length": "100"
+        },
+        {
+          "name": "building_city",
+          "type": "string",
+          "empty": true,
+          "length": "100"
+        },
+        {
+          "name": "building_state",
+          "type": "string",
+          "empty": true,
+          "length": "100"
+        },
+        {
+          "name": "building_address",
+          "type": "string",
+          "default": "None",
+          "length": "500"
+        },
+        {
+          "name": "contact_name",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "contact_phone",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "contact_email",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "feet_model",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "dice_size",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "requesting_trader",
+          "type": "string",
+          "empty": true,
+          "length": "100"
+        },
+        {
+          "name": "applicant",
+          "type": "user",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "empty": true
+        },
+        {
+          "name": "comments",
+          "type": "string",
+          "length": "200"
+        },
+        {
+          "name": "model_reference",
+          "type": "string",
+          "length": "50"
+        },
+        {
+          "name": "crane_version",
+          "type": "string",
+          "length": "50"
+        },
+        {
+          "name": "order_version",
+          "type": "string",
+          "length": "50"
+        },
+        {
+          "name": "configuration",
+          "type": "string",
+          "length": "400"
+        },
+        {
+          "name": "elevations",
+          "type": "text"
+        },
+        {
+          "name": "mounting_date",
+          "type": "date",
+          "default": "now"
+        },
+        {
+          "name": "rent_period",
+          "type": "int"
+        },
+        {
+          "name": "elevations_number",
+          "type": "int"
+        },
+        {
+          "name": "transport_number",
+          "type": "int"
+        },
+        {
+          "name": "has_power_lift",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "has_cabin",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "has_radio_control",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "has_cage_mounting",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "has_remote_control",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "boom_length",
+          "type": "float"
+        },
+        {
+          "name": "tower_height",
+          "type": "float"
+        },
+        {
+          "name": "final_height",
+          "type": "float"
+        },
+        {
+          "name": "insurance_responsable",
+          "type": "enum",
+          "options": [
+            "CLIENT",
+            "OWNER",
+            "BOTH"
+          ]
+        },
+        {
+          "name": "forwarding_system",
+          "type": "enum",
+          "options": [
+            "SIMPLE",
+            "DOUBLE"
+          ]
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "options": [
+            "CREATED",
+            "CHARGING",
+            "TRAVELING",
+            "RECEIVED",
+            "IN_BUILDING",
+            "FINISHED",
+            "RETURNED",
+            "UNASSIGNED"
+          ]
+        },
+        {
+          "name": "feet_type",
+          "type": "enum",
+          "options": [
+            "REUSABLE",
+            "CONVENTIONALS",
+            "WITHOUT",
+            "DIRECT"
+          ]
+        },
+        {
+          "name": "base_type",
+          "type": "enum",
+          "options": [
+            "LINKED",
+            "CONVENTIONAL",
+            "IN_CROSS",
+            "STRUCTURE"
+          ]
+        },
+        {
+          "name": "shipping",
+          "type": "shipping[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "1"
+          },
+          "write": false,
+          "empty": true
+        },
+        {
+          "name": "crane",
+          "type": "crane",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "empty": true
+        }
+      ]
+    },
+    {
+      "name": "shipping",
+      "attrs": [
+        {
+          "name": "truck_plate",
+          "type": "string",
+          "empty": true,
+          "length": "20"
+        },
+        {
+          "name": "transport_plate",
+          "type": "string",
+          "length": "20"
+        },
+        {
+          "name": "transport_phone",
+          "type": "string",
+          "length": "20"
+        },
+        {
+          "name": "transport_other_phone",
+          "type": "string",
+          "length": "20"
+        },
+        {
+          "name": "transport_carrier_name",
+          "type": "string",
+          "empty": true,
+          "length": "100"
+        },
+        {
+          "name": "transport_company",
+          "type": "string",
+          "empty": true,
+          "length": "100"
+        },
+        {
+          "name": "delivery_date",
+          "type": "date",
+          "default": "now"
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "options": [
+            "CREATED",
+            "IN_PROCESS",
+            "COMPLETED",
+            "IN_REVIEW",
+            "TRAVELING",
+            "ARRIVED",
+            "FINISHED",
+            "QUALITY_COMPLETED",
+            "SECURITY_COMPLETED",
+            "SECURITY_REVISION",
+            "SECURITY_INITIAL",
+            "SECURITY_INITIAL_COMPLETED"
+          ]
+        },
+        {
+          "name": "type",
+          "type": "enum",
+          "default": "TO_BUILDING",
+          "options": [
+            "TO_BUILDING",
+            "FROM_BUILDING"
+          ]
+        },
+        {
+          "name": "order",
+          "type": "order",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "contents",
+          "type": "content[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "1"
+          },
+          "write": false
+        },
+        {
+          "name": "evidences",
+          "type": "evidence[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "1"
+          },
+          "write": false
+        }
+      ]
+    },
+    {
+      "name": "user",
+      "attrs": [
+        {
+          "name": "rol",
+          "type": "enum",
+          "options": [
+            "ADMIN",
+            "QUALITY_CONTROL",
+            "BUILDING_OPERATOR",
+            "WORKSHOP_OPERATOR",
+            "SECURITY",
+            "MAINTENANCE_WORKER",
+            "COMMERCIAL",
+            "MAINTENANCE_SUPERVISOR"
+          ]
+        },
+        {
+          "name": "phone",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "shipping_notification",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "order_notification",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "arris_notification",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "crane",
+      "attrs": [
+        {
+          "name": "crane_id",
+          "type": "string",
+          "length": "50"
+        },
+        {
+          "name": "model",
+          "type": "string",
+          "length": "50"
+        },
+        {
+          "name": "number",
+          "type": "string",
+          "length": "50"
+        },
+        {
+          "name": "series",
+          "type": "string",
+          "length": "50"
+        },
+        {
+          "name": "in_use",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "owner",
+          "type": "enum",
+          "options": [
+            "GROKE",
+            "RENTED",
+            "SOLD"
+          ]
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "default": "CONSTRUCTION",
+          "options": [
+            "NA",
+            "COMMERCIAL",
+            "CLOSED",
+            "RELOCATED",
+            "MOUNTING",
+            "DISASSEMBLY",
+            "CONSTRUCTION"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "content",
+      "attrs": [
+        {
+          "name": "part_id",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "part_name",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "items",
+          "type": "text"
+        },
+        {
+          "name": "quantity",
+          "type": "int"
+        },
+        {
+          "name": "um",
+          "type": "string",
+          "length": "100",
+          "options": [
+            "JUEGO",
+            "PIEZA",
+            "KG",
+            "L",
+            "METRO"
+          ]
+        },
+        {
+          "name": "manual",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "images",
+          "type": "file[]",
+          "write": false
+        },
+        {
+          "name": "shipping",
+          "type": "shipping",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "operations",
+          "type": "operation[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "1"
+          },
+          "write": false
+        },
+        {
+          "name": "suggest_ref",
+          "type": "int",
+          "empty": true
+        },
+        {
+          "name": "elevation_number",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "part",
+      "attrs": [
+        {
+          "name": "crane_model",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "part_id",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "images",
+          "type": "file[]",
+          "write": false
+        },
+        {
+          "name": "items",
+          "type": "item[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "1"
+          },
+          "write": false
+        },
+        {
+          "name": "um",
+          "type": "enum",
+          "empty": true,
+          "options": [
+            "JUEGO",
+            "PIEZA",
+            "KG",
+            "L",
+            "METRO"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "evidence",
+      "attrs": [
+        {
+          "name": "evidence_file",
+          "type": "file"
+        },
+        {
+          "name": "shipping",
+          "type": "shipping",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "user",
+          "type": "user",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "flutter_path",
+          "type": "string",
+          "length": "100"
+        }
+      ]
+    },
+    {
+      "name": "operation",
+      "attrs": [
+        {
+          "name": "checked",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "type",
+          "type": "enum",
+          "options": [
+            "CHECK",
+            "CHARGE",
+            "REPORT"
+          ]
+        },
+        {
+          "name": "item_checked",
+          "type": "text"
+        },
+        {
+          "name": "comment",
+          "type": "text"
+        },
+        {
+          "name": "content",
+          "type": "content",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "user",
+          "type": "user",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        }
+      ]
+    },
+    {
+      "name": "suggestion",
+      "attrs": [
+        {
+          "name": "quantity",
+          "type": "int"
+        },
+        {
+          "name": "shipping",
+          "type": "shipping",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "empty": true
+        },
+        {
+          "name": "part",
+          "type": "part",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "order",
+          "type": "order",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "elevation_number",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "attrs": [
+        {
+          "name": "name",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "length": "200"
+        },
+        {
+          "name": "reference",
+          "type": "string",
+          "empty": true,
+          "length": "100"
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "empty": true,
+          "length": "200"
+        },
+        {
+          "name": "number",
+          "type": "int"
+        },
+        {
+          "name": "quantity",
+          "type": "string",
+          "length": "20"
+        },
+        {
+          "name": "manual_page",
+          "type": "int",
+          "empty": true
+        },
+        {
+          "name": "part",
+          "type": "part",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        }
+      ]
+    },
+    {
+      "name": "arris_operator",
+      "attrs": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "turn",
+          "type": "enum",
+          "options": [
+            "FIRST",
+            "SECOND",
+            "SECURITY"
+          ]
+        },
+        {
+          "name": "order",
+          "type": "order",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "user",
+          "type": "user",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        }
+      ]
+    },
+    {
+      "name": "arris_form",
+      "attrs": [
+        {
+          "name": "q1",
+          "type": "text"
+        },
+        {
+          "name": "q2",
+          "type": "text"
+        },
+        {
+          "name": "activity",
+          "type": "text"
+        },
+        {
+          "name": "reason_missing",
+          "type": "text"
+        },
+        {
+          "name": "solution_missing",
+          "type": "text"
+        },
+        {
+          "name": "onedrive_status",
+          "type": "enum",
+          "options": [
+            "PENDING",
+            "UPLOADED",
+            "ERROR",
+            "UPLOADING"
+          ]
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "default": "SENT",
+          "options": [
+            "SENT",
+            "MISSING"
+          ]
+        },
+        {
+          "name": "binnacles",
+          "type": "file[]",
+          "write": false
+        },
+        {
+          "name": "evidences",
+          "type": "arris_file[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "1"
+          },
+          "write": false,
+          "empty": true
+        },
+        {
+          "name": "operator",
+          "type": "arris_operator",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "crane_status",
+          "type": "arris_crane_status[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "1"
+          },
+          "write": false
+        },
+        {
+          "name": "failures",
+          "type": "arris_failure[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "1"
+          },
+          "write": false
+        },
+        {
+          "name": "date",
+          "type": "date",
+          "default": "now"
+        }
+      ]
+    },
+    {
+      "name": "onedrive_auth",
+      "attrs": [
+        {
+          "name": "access_token",
+          "type": "string",
+          "length": "2700"
+        },
+        {
+          "name": "refresh_token",
+          "type": "string",
+          "length": "2700"
+        }
+      ]
+    },
+    {
+      "name": "maintenance_category",
+      "attrs": [
+        {
+          "name": "name",
+          "type": "string",
+          "length": "300"
+        },
+        {
+          "name": "crane_model",
+          "type": "string",
+          "length": "300"
+        },
+        {
+          "name": "type",
+          "type": "enum",
+          "default": "NORMAL",
+          "options": [
+            "NORMAL",
+            "FINAL",
+            "LAST"
+          ]
+        },
+        {
+          "name": "phase",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "maintenance_type",
+      "attrs": [
+        {
+          "name": "name",
+          "type": "string",
+          "length": "300"
+        },
+        {
+          "name": "category",
+          "type": "maintenance_category",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "input_type",
+          "type": "enum",
+          "options": [
+            "FILE",
+            "TEXT"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "maintenance_evidence",
+      "attrs": [
+        {
+          "name": "file",
+          "type": "maintenance_file[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "1"
+          },
+          "write": false
+        },
+        {
+          "name": "type",
+          "type": "maintenance_type",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "maintenance",
+          "type": "maintenance",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "skip_evidence",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "value",
+          "type": "text",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "name": "maintenance",
+      "attrs": [
+        {
+          "name": "crane",
+          "type": "crane",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "evidences",
+          "type": "maintenance_evidence[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "1"
+          },
+          "write": false
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "options": [
+            "ACTIVE",
+            "FINISHED"
+          ]
+        },
+        {
+          "name": "start",
+          "type": "date",
+          "default": "null",
+          "empty": true
+        },
+        {
+          "name": "end",
+          "type": "date",
+          "default": "null",
+          "empty": true
+        },
+        {
+          "name": "type",
+          "type": "enum",
+          "default": "NORMAL",
+          "options": [
+            "NORMAL",
+            "FINAL",
+            "LAST"
+          ]
+        },
+        {
+          "name": "phase",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "maintenance_file",
+      "attrs": [
+        {
+          "name": "file",
+          "type": "file"
+        },
+        {
+          "name": "user",
+          "type": "user",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "maintenance_evidence",
+          "type": "maintenance_evidence",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        }
+      ]
+    },
+    {
+      "name": "arris_file",
+      "attrs": [
+        {
+          "name": "file",
+          "type": "file"
+        },
+        {
+          "name": "category",
+          "type": "enum",
+          "options": [
+            "LIMPIEZA_PIE",
+            "LACRADO_ANCLAS_TORNILLOS_DE_PIE",
+            "LACRADO_TORNILLOS_DE_CORONA",
+            "TORNILLOS_ANCLA_CHAM_MECA_ELEVACION_CARRO_LACRADO",
+            "MECANISMO_GIRO",
+            "FUNCIONAMIENTO_VELETA",
+            "MECANISMO_CARRO_ABATIMIENTO",
+            "CABLE_CARRO_ABATIMIENTO",
+            "LIMITADORES",
+            "REVISION_FRENO_160",
+            "REVISION_PINON",
+            "VIDEO_TRASLACION",
+            "ABATIMIENTO",
+            "MOTOR_ELEVACION",
+            "ARRIOSTRAMIENTO"
+          ]
+        },
+        {
+          "name": "arris_form",
+          "type": "arris_form",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "empty": true
+        }
+      ]
+    },
+    {
+      "name": "action_log",
+      "attrs": [
+        {
+          "name": "model_id",
+          "type": "int"
+        },
+        {
+          "name": "model_name",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "action",
+          "type": "enum",
+          "options": [
+            "CREATE",
+            "UPDATE",
+            "DELETE"
+          ]
+        },
+        {
+          "name": "value",
+          "type": "json"
+        }
+      ]
+    },
+    {
+      "name": "arris_crane_status",
+      "attrs": [
+        {
+          "name": "type",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "options": [
+            "OK",
+            "NOT_OK",
+            "NA"
+          ]
+        },
+        {
+          "name": "arris_form",
+          "type": "arris_form",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        }
+      ]
+    },
+    {
+      "name": "maintenance_perms",
+      "attrs": [
+        {
+          "name": "category",
+          "type": "maintenance_category",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "users",
+          "type": "user[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "maintenance",
+          "type": "maintenance",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "estimated_time",
+          "type": "float"
+        },
+        {
+          "name": "manually_enabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "arris_failure",
+      "attrs": [
+        {
+          "name": "description",
+          "type": "text"
+        },
+        {
+          "name": "solution",
+          "type": "text"
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "options": [
+            "REPORTED",
+            "ASSIGNED",
+            "SOLVED"
+          ]
+        },
+        {
+          "name": "reported_solved",
+          "type": "arris_operator",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "empty": true
+        },
+        {
+          "name": "arris_form",
+          "type": "arris_form",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "solved_report",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "evidences",
+          "type": "file[]",
+          "write": false,
+          "empty": true
+        }
+      ]
+    },
+    {
+      "name": "app_info",
+      "attrs": [
+        {
+          "name": "version",
+          "type": "string",
+          "length": "20"
+        }
+      ]
+    },
+    {
+      "name": "security_check",
+      "attrs": [
+        {
+          "name": "value",
+          "type": "text"
+        },
+        {
+          "name": "files",
+          "type": "file[]",
+          "write": false
+        },
+        {
+          "name": "security_check_type",
+          "type": "security_check_type",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "security_revision",
+          "type": "security_revision",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "user",
+          "type": "user",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "empty": true
+        },
+        {
+          "name": "is_deviation",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "deviation_value",
+          "type": "enum",
+          "default": "NONE",
+          "options": [
+            "TRUE",
+            "FALSE",
+            "NONE"
+          ]
+        },
+        {
+          "name": "findings",
+          "type": "text"
+        },
+        {
+          "name": "corrections",
+          "type": "text"
+        },
+        {
+          "name": "date",
+          "type": "date",
+          "default": "now",
+          "empty": true
+        },
+        {
+          "name": "scp_liberation",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "name": "security_check_type",
+      "attrs": [
+        {
+          "name": "number",
+          "type": "float"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "security_category",
+          "type": "security_category",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        }
+      ]
+    },
+    {
+      "name": "security_category",
+      "attrs": [
+        {
+          "name": "name",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "part_id",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "crane_model",
+          "type": "string",
+          "length": "50"
+        },
+        {
+          "name": "is_deviation",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is_initial",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "security_revision",
+      "attrs": [
+        {
+          "name": "crane_model",
+          "type": "string",
+          "length": "100"
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "order",
+          "type": "order",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          },
+          "empty": true
+        },
+        {
+          "name": "type",
+          "type": "enum",
+          "default": "INITIAL",
+          "options": [
+            "INITIAL",
+            "FINAL"
+          ]
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "default": "CREATED",
+          "options": [
+            "CREATED",
+            "IN_PROCESS",
+            "COMPLETED"
+          ]
+        },
+        {
+          "name": "init_date",
+          "type": "date",
+          "default": "now",
+          "empty": true
+        },
+        {
+          "name": "end_date",
+          "type": "date",
+          "default": "now",
+          "empty": true
+        }
+      ]
+    }
+  ]
+}

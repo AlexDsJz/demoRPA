@@ -1,0 +1,9 @@
+{
+  "extend": {
+    "actions": []
+  },
+  "last_build_version": "0.7.1",
+  "platform": "reactjs",
+  "project_description": "This repository holds the source code of groke",
+  "project_name": "groke"
+}

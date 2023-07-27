@@ -1,0 +1,50 @@
+.navbar {
+  background-color: #0090a9 !important;
+  border-radius: 0px 15px 15px 0px;
+  border: 0 !important;
+}
+
+.navbar-item > *,
+.nav-icon {
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+.navbar-item {
+  width: 80%;
+  margin-top: 2% !important;
+  margin-left: 10% !important;
+  margin-right: 10% !important;
+  background-color: #0090a9 !important;
+}
+
+.nav-link.active {
+  background-color: #05bcc8 !important;
+  border-radius: 25px !important;
+  border: 0 !important;
+}
+
+.nav-link {
+  border-radius: 25px !important;
+  color: #fff !important;
+}
+
+.nav-link:hover {
+  background-color: #05bcc8 !important;
+}
+
+.nav-icon {
+  margin-right: 10% !important;
+}
+
+.nav-item {
+  margin-top: 10px !important;
+  .nav-link {
+    padding-left: 20px !important;
+  }
+}
+
+.js-navbar-vertical-aside-menu-link::after{
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+  color: white !important;
+}
