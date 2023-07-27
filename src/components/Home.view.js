@@ -24,7 +24,7 @@ const Home = ({ rol }) =>
       <Sidenav />
       <main id="content" role="main" class="main">
         <Switch>
-          <Route path="/orders" component={Orders} />
+          <Route path="/reports" component={Orders} />
           <Route path="/shippings" component={Shippings} />
           <Route path="/cranes" component={Cranes} />
           <Route path="/users" component={Users} />
@@ -41,7 +41,7 @@ const Home = ({ rol }) =>
           <Route path="/maintenances" component={Maintenances} />
           <Route path="/help" component={Information} />
           <Route path="/manuals" component={Manuals} />
-          <Redirect to={rol == "ADMIN" || rol == "COMMERCIAL" ? "/orders" : 
+          <Redirect to={rol == "ADMIN" || rol == "COMMERCIAL" ? "/reports" : 
             rol == "MAINTENANCE_SUPERVISOR" ? "/maintenances" : "/ariss"} />
         </Switch>
       </main>

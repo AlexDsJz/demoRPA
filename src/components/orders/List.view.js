@@ -27,78 +27,25 @@ const OrderList = ({
               >
                 <div className="col-md-2 p-2">
                   {
-                    order.crane 
-                      ? <><b>{order.crane.series}</b>{" / " + order.crane.model + "" + order.crane.number}</> 
-                      : <><b>SIN ASIGNAR</b>{" / " + order.modelReference}</> 
+                    order.clientName 
                   }
                 </div>
                 <div className="col-md-3 p-2">
-                  {order.clientName} - {order.buildingName}
+                  {order.crane.series}
                 </div>
-                <div className="col-md-2 p-2">
+                <div className="col-md-3 p-2">
                   &nbsp;&nbsp;{order.requestingTrader}
                 </div>
-                <div className="col-md-1 p-2">
-                  &nbsp;&nbsp;&nbsp;&nbsp;{(new Date(order.createdAt)).toLocaleDateString()}
-                </div>
                 <div className="col-md-2 p-2">
-                  <div className="d-flex justify-content-center">
-                    <div className="text-center">
-                      <select 
-                        disabled={order.status == "UNASSIGNED"}
-                        className="custom-badge-select border-0" 
-                        style={mapOrderStatusColor(order.status)}
-                        defaultValue={order.status} onChange={
-                        (e) => {
-                          if(e.target.value == "FINISHED") {
-                            let confirm = window.confirm("¿Está seguro de finalizar la orden?")
-                            if(!confirm) {
-                              e.preventDefault();
-                              e.target.value = order.status;
-                            }
-                            else {
-                              onSetStatus(order, e.target.value)
-                            }
-                          }
-                          else {
-                            onSetStatus(order, e.target.value)
-                          }
-                        }
-                        }
-                      >
-                          { order.status == "UNASSIGNED" && <option value="UNASSIGNED">Sin asignar</option> }
-                          <option value="CREATED">En carga</option>
-                          {/* <option value="CHARGING">En carga</option>
-                          <option value="TRAVELING">Carga completa</option>
-                          <option value="RECEIVED">Recibida</option> */}
-                          <option value="IN_BUILDING">En destino</option>
-                          {/* <option value="RETURNED">Retornada</option> */}
-                          <option value="FINISHED">Finalizada (en taller)</option>
-                      </select>
-                      {getTransportMessage(order)}
-                    </div>
-                  </div>
+                  {(new Date(order.createdAt)).toLocaleDateString()}
                 </div>
                 <div className="col-md-2 p-2">
                   <div className="row">
-                    <div className="col">
-                      <a onClick={() => {
-                          window.location.href = "/binnacles?crane=" + 
-                          order.crane.series + " / " + order.crane.model + "" + order.crane.number
-                      }} role="button">
-                          <i className="fa fa-clipboard text-warning"></i>
-                      </a>
-                    </div>
                     <div className="col">
                       <Link to={{pathname: `/${order.id}/edit`, 
                         state: {crane: order.crane, configuration: order.configuration, elevations: order.elevations}}}
                       >
                         <i className="fa fa-edit"></i>
-                      </Link>
-                    </div>
-                    <div className="col">
-                      <Link to={`/${order.id}/print`}>
-                        <i className="fa fa-print text-success"></i>
                       </Link>
                     </div>
                     <div className="col">

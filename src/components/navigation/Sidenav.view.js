@@ -15,8 +15,7 @@ const SidenavView = () =>
         <div class="navbar-brand-wrapper justify-content-between">
           {/* Logo */}
           <a class="navbar-brand" href="./index.html" aria-label="Front">
-            <img class="navbar-brand-logo" src="/theme/svg/logos/logo-white.svg" alt="Logo" />
-            <img class="navbar-brand-logo-mini" src="/theme/svg/logos/logo-short.svg" alt="Logo" />
+            <img class="ml-6 navbar-brand-logo" src="/theme/svg/logos/new-logo1.png" alt="Logo" />
           </a>
 
           {/* Vertical Toggle */}

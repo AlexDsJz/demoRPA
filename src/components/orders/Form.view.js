@@ -60,7 +60,7 @@ const OrderForm = ({
       ? <div class="card-header">
         <div className="d-flex align-items-center justify-content-start w-100">
           <h3 class="card-header-title">
-            {order.id ? "Editar orden" : "Nueva orden"}
+            {order.id ? "Editar orden" : "Crear Reporte"}
           </h3>
           <h6 class="card-header-title step-title mx-3 mt-1">Paso {step} de 3</h6>
         </div>
@@ -105,9 +105,9 @@ const OrderForm = ({
 
                     <div class="mb-1 w-100">
 
-                      <h4>Datos del cliente</h4>
+                      <h4>Información General</h4>
                       <div class="form-group form-group-default required mt-3 mb-3">
-                        <label class="control-label">Nombre del Cliente o Razón Social</label>
+                        <label class="control-label">Persona que envía</label>
                         <Field type="text" name="client_name" class="form-control" required />
                         <div class="invalid-feedback">Required</div>
                       </div>
@@ -115,14 +115,14 @@ const OrderForm = ({
                       <div className="row">
                         <div className="col-md-6">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Nombre de la Obra</label>
+                            <label class="control-label">Nombre de Reporte</label>
                             <Field type="text" name="building_name" class="form-control" required />
                             <div class="invalid-feedback">Required</div>
                           </div>
                         </div>
                         <div className="col-md-6">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Contacto del cliente</label>
+                            <label class="control-label">Contacto de registro</label>
                             <Field type="text" name="contact_name" class="form-control" required />
                             <div class="invalid-feedback">Required</div>
                           </div>
@@ -130,13 +130,12 @@ const OrderForm = ({
                       </div>
 
                       <div class="form-group form-group-default required mb-3">
-                        <label class="control-label">Dirección (Calle, Municipio / Delegación, Estado)</label>
+                        <label class="control-label">Dirección de la empresa</label>
                         <Field type="text" name="building_address" class="form-control" required />
                         <div class="invalid-feedback">Required</div>
                       </div>
 
-                      <h4 class="mt-1">Datos de contacto</h4>
-
+                      <h4 class="mt-1">Contacto</h4>
                       <div className="row mt-3">
                         <div className="col-md-6">
                           <div class="form-group form-group-default required">
@@ -154,11 +153,11 @@ const OrderForm = ({
                         </div>
                       </div>
 
-                      <h4 class="mt-2">Datos de comerciante</h4>
+                      <h4 class="mt-2">Datos de encargado</h4>
                       <div className="row mt-3">
                         <div className="col-md-6">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Comerciante solicitante</label>
+                            <label class="control-label">Responsable</label>
                             <Field component="select" name="applicant.id" class="form-control" required>
                               <option value="">Seleccione una opción</option>
                               {
@@ -174,7 +173,7 @@ const OrderForm = ({
                         </div>
                         <div className="col-md-6">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Versión de orden</label>
+                            <label class="control-label">Reporte No.</label>
                             <Field type="number" min="0" max="9" name="order_version" class="form-control" required />
                             <div class="invalid-feedback">Required</div>
                           </div>
@@ -183,11 +182,8 @@ const OrderForm = ({
                     </div>
 
                     <div className="row mt-3">
-                      <div className="col-md-6">
-                        <button type="submit" class="btn btn-block btn-primary">Siguiente</button>
-                      </div>
-                      <div className="col-md-6">
-                        <button type="button" class="btn btn-block btn-secondary" onClick={onClose}>Cancelar</button>
+                      <div className="col-md-6" style={{marginLeft:"13vw"}}>
+                        <button type="submit" class="btn btn-block btn-success">Siguiente</button>
                       </div>
                     </div>
 
@@ -200,17 +196,17 @@ const OrderForm = ({
 
                     <div class="mb-3">
 
-                      <h4 className="mb-4">Datos de la Grúa</h4>
+                      <h4 className="mb-4">Información adicional</h4>
 
                       <div className="row">
                         <div className="col-md-4">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Modelo</label>
+                            <label class="control-label">Número base de identificación</label>
                             <Typeahead
                               id="cranes"
                               required
                               ref={typeaheadRef}
-                              placeholder="Selecciona un modelo"
+                              placeholder="Selecciona una opción"
                               options={models}
                               selected={models.find(m => m == model) ? [model] : []}
                               onInputChange={(selected) => handleChangeModel(selected)}
@@ -221,11 +217,11 @@ const OrderForm = ({
                         </div>
                         <div className="col-md-4">
                           <div class="form-group form-group-default">
-                            <label class="control-label">Grúa</label>
+                            <label class="control-label">ID de la empresa</label>
                             <Typeahead
                               id="ns"
                               ref={typeaheadRef}
-                              placeholder="Selecciona una grúa"
+                              placeholder="Selecciona el ID"
                               options={cranes}
                               labelKey={(option) => option.series ?? ""}
                               defaultInputValue={craneSelected.series ?? ""}
@@ -236,7 +232,7 @@ const OrderForm = ({
                         </div>
                         <div className="col-md-4">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Versión a montar</label>
+                            <label class="control-label">Día tentativo a dar solución</label>
                             <Field type="text" name="crane_version" class="form-control" required />
                             <div class="invalid-feedback">Required</div>
                           </div>
@@ -246,26 +242,25 @@ const OrderForm = ({
                       <div className="row">
                         <div className="col-md-4">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Periodo de renta (en meses)</label>
+                            <label class="control-label">Mes tentativo a dar solución</label>
                             <Field type="number" name="rent_period" class="form-control" required />
                             <div class="invalid-feedback">Required</div>
                           </div>
                         </div>
                         <div className="col-md-4">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Fecha tentativa del montaje</label>
+                            <label class="control-label">Fecha en que se recibe</label>
                             <Field type="date" name="mounting_date" class="form-control" required />
                             <div class="invalid-feedback">Required</div>
                           </div>
                         </div>
                         <div className="col-md-4">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Responsabilidad de seguros</label>
+                            <label class="control-label">Solución a</label>
                             <Field component="select" name="insurance_responsable" class="form-control" required>
                               <option value="">Seleccione una opción</option>
                               <option value="CLIENT">Cliente</option>
                               <option value="OWNER">Empresa</option>
-                              <option value="BOTH">Ambos</option>
                             </Field>
                             <div class="invalid-feedback">Required</div>
                           </div>
@@ -275,31 +270,8 @@ const OrderForm = ({
                       <div className="row">
                         <div className="col-md-4">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Transportes esperados y vendidos</label>
+                            <label class="control-label">Reportes recibidos</label>
                             <Field type="number" name="transport_number" class="form-control" required />
-                            <div class="invalid-feedback">Required</div>
-                          </div>
-                        </div>
-                        <div className="col-md-4">
-                          <div class="form-group form-group-default required">
-                            <label class="control-label">Longitud de pluma</label>
-                            <Field type="number" name="boom_length" class="form-control" required />
-                            <div class="invalid-feedback">Required</div>
-                          </div>
-                        </div>
-                        <div className="col-md-4">
-                          <div class="form-group form-group-default required">
-                            <label class="control-label">Altura bajo gancho inicial (m)</label>
-                            <Field
-                              type="number"
-                              name="tower_height"
-                              class="form-control"
-                              required
-                              onChange={(e) => {
-                                setStartHeight(e.target.value)
-                                setFieldValue('tower_height', e.target.value);
-                              }}
-                            />
                             <div class="invalid-feedback">Required</div>
                           </div>
                         </div>
@@ -307,14 +279,13 @@ const OrderForm = ({
 
                       <div className="row mt-4">
                         <div className="col-md-6">
-                          <div class="form-group form-group-default required">
+                          <div class="form-group form-group-default">
                             <label class="control-label">
-                              Configuración de la grúa
+                              Configuración adicional
                               <a className="ml-2 border-0 bg-light" role="button" onClick={() => {
                                 setElevationEdit(0);
                                 setHideModal(false);
                               }}>
-                                <i className="fa fa-edit"></i>
                               </a>
                             </label>
                             <Typeahead
@@ -327,16 +298,15 @@ const OrderForm = ({
                               options={towers}
                               onChange={(selected) => null}
                               selected={elevationParts[0].map(part => `${part.part} (${part.quantity})`)} />
-                            <div class="invalid-feedback">Required</div>
                           </div>
                         </div>
                         <div className="col-md-6">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Sistema de reenvíos</label>
+                            <label class="control-label">Tipo de solución</label>
                             <Field component="select" name="forwarding_system" class="form-control" required>
                               <option value="">Seleccione una opción</option>
                               <option value="SIMPLE">Simple</option>
-                              <option value="DOUBLE">Doble</option>
+                              <option value="DOUBLE">Detallada</option>
                             </Field>
                             <div class="invalid-feedback">Required</div>
                           </div>
@@ -346,7 +316,7 @@ const OrderForm = ({
                       <div className="row">
                         <div className="col-md-3">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Número de elevaciones</label>
+                            <label class="control-label">Usuarios afectados</label>
                             <Field
                               type="number"
                               name="elevations_number"
@@ -362,7 +332,7 @@ const OrderForm = ({
                         </div>
                         <div className="col-md-3">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Altura final gancho (m)</label>
+                            <label class="control-label">Pruebas realizadas</label>
                             <Field
                               type="number"
                               name="final_height"
@@ -378,7 +348,7 @@ const OrderForm = ({
                         </div>
                         <div className="col-md-3">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Power Lift</label>
+                            <label class="control-label">¿Tiene solución?</label>
                             <Field component="select" name="has_power_lift" class="form-control" required>
                               <option value="">Seleccione una opción</option>
                               <option value="true">Si</option>
@@ -389,7 +359,7 @@ const OrderForm = ({
                         </div>
                         <div className="col-md-3">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Cabina</label>
+                            <label class="control-label">Detalles completos</label>
                             <Field component="select" name="has_cabin" class="form-control" required>
                               <option value="">Seleccione una opción</option>
                               <option value="true">Si</option>
@@ -455,12 +425,9 @@ const OrderForm = ({
                     }
 
 
-                    <div className="row mt-5">
-                      <div className="col-md-6">
-                        <button type="submit" class="btn btn-block btn-primary" onSubmit={onSubmit}>Siguiente</button>
-                      </div>
-                      <div className="col-md-6">
-                        <button type="button" class="btn btn-block btn-secondary" onClick={onPrev}>Anterior</button>
+                    <div className="row mt-3">
+                      <div className="col-md-6" style={{marginLeft:"13vw"}}>
+                        <button type="submit" class="btn btn-block btn-success">Siguiente</button>
                       </div>
                     </div>
 
@@ -476,61 +443,21 @@ const OrderForm = ({
                       <div className="row">
                         <div className="col-md-4">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Radio control</label>
-                            <Field component="select" name="has_radio_control" class="form-control" required>
-                              <option value="">Seleccione una opción</option>
-                              <option value="true">Si</option>
-                              <option value="false">No</option>
-                            </Field>
-                            <div class="invalid-feedback">Required</div>
-                          </div>
-                        </div>
-                        <div className="col-md-4">
-                          <div class="form-group form-group-default required">
-                            <label class="control-label">Telemando</label>
-                            <Field component="select" name="has_remote_control" class="form-control" required>
-                              <option value="">Seleccione una opción</option>
-                              <option value="true">Si</option>
-                              <option value="false">No</option>
-                            </Field>
-                            <div class="invalid-feedback">Required</div>
-                          </div>
-                        </div>
-                        <div className="col-md-4">
-                          <div class="form-group form-group-default required">
-                            <label class="control-label">Montaje con jaula</label>
-                            <Field component="select" name="has_cage_mounting" class="form-control" required>
-                              <option value="">Seleccione una opción</option>
-                              <option value="true">Si</option>
-                              <option value="false">No</option>
-                            </Field>
-                            <div class="invalid-feedback">Required</div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <h4 className="mb-4 mt-3">Datos de Base</h4>
-
-                      <div className="row">
-                        <div className="col-md-4">
-                          <div class="form-group form-group-default required">
-                            <label class="control-label">Tipo de pies</label>
+                            <label class="control-label">Tipo de empresa</label>
                             <Field component="select" name="feet_type" class="form-control" required>
                               <option value="">Seleccione una opción</option>
-                              <option value="REUSABLE">Reutilizables</option>
-                              <option value="CONVENTIONALS">Convencionales</option>
-                              <option value="WITHOUT">Sin pies</option>
-                              <option value="DIRECT">Directo a marcos</option>
+                              <option value="REUSABLE">Tecnología</option>
+                              <option value="CONVENTIONALS">Energía</option>
                             </Field>
                             <div class="invalid-feedback">Required</div>
                           </div>
                         </div>
                         <div className="col-md-4">
                           <div class="form-group form-group-default">
-                            <label class="control-label">Modelo de pies</label>
+                            <label class="control-label">Observaciones</label>
                             <Typeahead
                               id="feets"
-                              placeholder="Seleccione el modelo de pies"
+                              placeholder=""
                               options={feets}
                               defaultInputValue={feets.find(feet => feet == values.feet_model)}
                               onChange={(selected) => setFieldValue("feet_model", selected[0])} />
@@ -538,25 +465,14 @@ const OrderForm = ({
                         </div>
                         <div className="col-md-4">
                           <div class="form-group form-group-default required">
-                            <label class="control-label">Tipo de base</label>
+                            <label class="control-label">Rol de la persona que envío</label>
                             <Field component="select" name="base_type" class="form-control" required>
                               <option value="">Seleccione una opción</option>
-                              <option value="LINKED">Ligada</option>
-                              <option value="CONVENTIONAL">Convencional</option>
-                              <option value="IN_CROSS">En cruz</option>
-                              <option value="STRUCTURE">Sobre estructura</option>
+                              <option value="LINKED">Gerente</option>
+                              <option value="CONVENTIONAL">Área de TI</option>
+                              <option value="IN_CROSS">Supervisor</option>
                             </Field>
                             <div class="invalid-feedback">Required</div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="row">
-                        <div className="col-md-12">
-                          <div class="form-group form-group-default">
-                            <label class="control-label">Tamaño del dado si es base convencional</label>
-                            <Field type="text" name="dice_size" id="dice_size" class="form-control" />
-                            <div class="invalid-feedback"></div>
                           </div>
                         </div>
                       </div>
@@ -565,7 +481,7 @@ const OrderForm = ({
                         <div className="col">
                           <div class="form-group form-group-default">
                             <label class="control-label">
-                              Comentarios adicionales para la ubicación de pies y/o montajes
+                              Comentarios generales
                             </label>
                             <textarea type="textarea" name="comments" id="comments" class="form-control" rows="5"
                               onChange={(event) => setFieldValue("comments", event.target.value)} value={values.comments} />
@@ -578,12 +494,12 @@ const OrderForm = ({
 
                     <div className="row mt-7">
                       <div className="col-md-6">
-                        <button type="submit" class="btn btn-block btn-primary" onSubmit={onSubmit}>
-                          {order.id ? "Actualizar orden" : "Crear orden"}
-                        </button>
+                        <button type="button" class="btn btn-block btn-secondary" onClick={onPrev}>Anterior</button>
                       </div>
                       <div className="col-md-6">
-                        <button type="button" class="btn btn-block btn-secondary" onClick={onPrev}>Anterior</button>
+                        <button type="submit" class="btn btn-block btn-success" onSubmit={onSubmit}>
+                          {order.id ? "Actualizar orden" : "Crear reporte"}
+                        </button>
                       </div>
                     </div>
 
@@ -595,7 +511,7 @@ const OrderForm = ({
                   <>
                     <Advice
                       title={error === null
-                        ? (order.id ? "Orden actualizada" : "Orden creada")
+                        ? (order.id ? "Orden actualizada" : "Registro creado")
                         : (order.id ? "Error al actualizar orden" : "Error al crear orden")}
                       subtitle={null}
                       btnTitle={error === null

@@ -224,11 +224,6 @@ const OrderFormSave = ({ onCompleted = () => null, onError = () => null, setCrea
 
   const onSubmit = (values) => {
 
-    if(step == 2 && (!model || model == "")) {
-      alert("Seleccione un modelo o una grúa");
-      return;
-    }
-    
     if(step < 3) {
       setStep(step + 1);
       return;
@@ -241,12 +236,12 @@ const OrderFormSave = ({ onCompleted = () => null, onError = () => null, setCrea
       callPost({
         ...values,
         rent_period: parseInt(values.rent_period),
-        boom_length: parseFloat(values.boom_length),
-        tower_height: parseFloat(values.tower_height),
+        boom_length: 0.0,
+        tower_height: 0.0,
         mounting_date: new Date(values.mounting_date),
         has_power_lift: values.has_power_lift === "true",
         has_cabin: values.has_cabin === "true",
-        has_radio_control: values.has_radio_control === "true",
+        has_radio_control: "true",
         model_reference: model,
         crane: craneSelected,
         insurance_responsable: values.insurance_responsable,
@@ -258,10 +253,10 @@ const OrderFormSave = ({ onCompleted = () => null, onError = () => null, setCrea
         crane_version: values.crane_version,
         elevations_number: parseInt(values.elevations_number),
         transport_number: parseInt(values.transport_number),
-        has_remote_control: values.has_remote_control === "true",
-        has_cage_mounting: values.has_cage_mounting === "true",
+        has_remote_control: "true",
+        has_cage_mounting: "true",
         comments: values.comments??"",
-        dice_size: values.dice_size??"",
+        dice_size: "",
         feet_model: values.feet_model??"",
         elevations: elevationParts.filter((_, idx) => idx > 0)
           .map(elevation => elevation.map(part => `${part.part} (${part.quantity}) [${part.generated}]`)
