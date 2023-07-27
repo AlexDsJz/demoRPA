@@ -29,50 +29,13 @@ const Orders = ({
       <div class="page-header pt-4">
         <div class="row align-items-end">
           <div class="col-sm">
-            <h1 class="page-header-title">Órdenes</h1>
+            <h1 class="page-header-title">Registros</h1>
           </div>
           <div class="col-sm-auto">
             <div class="btn-group" role="group">
               <Link to="/create" className="btn btn-primary">
-                <i class="tio-add mr-1"></i>Nueva Orden
+                <i class="tio-add mr-1"></i>Crear registro
               </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="mb-3 mx-1">
-        <div className="row">
-          <div className="col-md-6">
-            <h4>Órdenes Activas</h4>
-          </div>
-          <div className="col-md-6">
-            <div className="d-flex flex-row justify-content-end align-items-center">
-              <div className="">
-                <Typeahead
-                  id="menu"
-                  ref={searchRef}
-                  placeholder="Buscar Órdenes"
-                  onInputChange={handleChange}
-                  labelKey={(crane) => `${crane.series} - ${crane.model} ${crane.number}`}
-                  onChange={(selected) => selected.length > 0
-                    ? handleChange(selected[0].series)
-                    : ""
-                  }
-                  options={[
-                    ...cranes
-                  ]}
-                >
-                  <div className="rbt-aux">
-                    {search.length == 0 && <i className="fa fa-search rbt-aux"></i>}
-                    {search.length > 0 && <i className="fa fa-times rbt-close text-danger"
-                      style={{ paddingTop: "4px" }} role="button" onClick={() => {
-                        searchRef.current.clear()
-                        handleChange("")
-                      }}></i>}
-                  </div>
-                </Typeahead>
-              </div>
             </div>
           </div>
         </div>
