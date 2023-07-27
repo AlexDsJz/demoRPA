@@ -46,6 +46,9 @@ const OrderList = ({ search, statusFilters, orderDate }) => {
             partName
           }
         }
+        applicant{
+          firstName
+        }
         requestingTrader
         clientName
         buildingName
@@ -61,7 +64,6 @@ const OrderList = ({ search, statusFilters, orderDate }) => {
   }`,
     pageNum,
     pageSize,
-    filters,
     { orderBy: orderDate + "created_at" });
 
   const [callDelete, reqDelete] = useDelete(DELETE_ORDER, {

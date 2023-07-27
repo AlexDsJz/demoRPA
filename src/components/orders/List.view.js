@@ -34,7 +34,7 @@ const OrderList = ({
                   {order.crane.series}
                 </div>
                 <div className="col-md-3 p-2">
-                  &nbsp;&nbsp;{order.requestingTrader}
+                  &nbsp;&nbsp;{order.applicant.firstName}
                 </div>
                 <div className="col-md-2 p-2">
                   {(new Date(order.createdAt)).toLocaleDateString()}
