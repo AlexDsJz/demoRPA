@@ -20,7 +20,7 @@ const Login = ({ onSubmit, error }) =>
 
     <div class="container py-5 py-sm-7">
       <a class="d-flex justify-content-center mb-5" href="index.html">
-        <img class="z-index-2" src="/theme/img/groke.png" alt="Logo" style={ {width: "12rem"} }/>
+        <img class="z-index-2" src="/theme/svg/logos/new-logo1.png" alt="Logo" style={ {width: "19rem"} }/>
       </a>
       <div class="row justify-content-center">
         <div class="col-md-7 col-lg-5">
@@ -92,7 +92,7 @@ const Login = ({ onSubmit, error }) =>
                       : null 
                     }
 
-                    <button type="submit" class="btn btn-lg btn-block btn-primary">
+                    <button type="submit" class="btn btn-lg btn-block btn-dark">
                       Iniciar sesión
                     </button>
 
@@ -100,9 +100,6 @@ const Login = ({ onSubmit, error }) =>
               </Formik>
             </div>
           </div>
-
-          <a className="btn btn-block btn-outline-secondary" href="stores">Instalar apps android/iOS</a>
-
         </div>
       </div>
     </div>
